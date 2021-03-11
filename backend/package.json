@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/munhiny/server#readme",
     "devDependencies": {
+        "@types/cors": "^2.8.10",
         "@types/express": "^4.17.11",
         "@types/node": "^14.14.33",
         "@types/pg": "^7.14.11",
@@ -30,6 +31,7 @@
     "dependencies": {
         "@types/body-parser": "^1.19.0",
         "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
         "express": "^4.17.1"
     }
 }
