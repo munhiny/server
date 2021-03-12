@@ -41,36 +41,45 @@ const useGetData = () => {
   // return data
 
   const url = "http://localhost:4000/employees"
-  // response state
+
+  // response data state
   const [data, setData] = useState<employee[]>([])
 
   useEffect(() => {
-
-    // create asyn fetch api function in sync function
+    // create async function in sync function to fetch data
 
     const fetchAPI = async () => {
-      try{
-        // fetch the data from the rest API
+
+
+      try {
+        // make api request
         const response = await fetch(url)
 
-        // if status is 200 then extract JSON
-        if(response.status === 200 ) {
-          const employeeData = await response.json()
-          // set data
-          setData(employeeData)
+        // if status return is 200, extract data from response
+        if(response.status === 200) {
+          const responseData = await response.json()
+          // set response data
+          setData(responseData)
+
         } else {
-          console.error(`Error ${response.status} ${response.statusText}`)
+          console.error(`Error ${response.status} ${response.statusText}`);
+          
         }
+
       } catch(error) {
-        console.error(`Error ${error}`)
+        console.error(`Error ${error}`);
+        
       }
+
     }
-    
-    // call fetchAPI function
+
+    // run fetch API function
     fetchAPI()
+    
 
   }, [])
 
+  // return data
   return data
 
   };
