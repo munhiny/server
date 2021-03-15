@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "moment": "^2.29.1",
     "pg-types": "^3.0.1"
   }
 }

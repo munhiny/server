@@ -18,10 +18,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pool = void 0;
 var pg_1 = require("pg");
 var pgTypes = __importStar(require("pg-types"));
+var moment_1 = __importDefault(require("moment"));
 exports.pool = new pg_1.Pool({
     user: "awesome5",
     host: "localhost",
@@ -29,6 +33,12 @@ exports.pool = new pg_1.Pool({
     password: "",
     port: 5432,
 });
+var parseDate = function (val) {
+    return val === null ? null : moment_1.default(val).format('YYYY-MM-DD');
+};
 // parse parse numeric values as numeric and not as string
 pgTypes.setTypeParser(1700, function (value) { return parseFloat(value); });
+pgTypes.setTypeParser(1082, function (value) {
+    return value === null ? null : parseDate(value);
+});
 //# sourceMappingURL=index.js.map

@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import cors from 'cors';
-import { getAllEmployees } from './db/queries'
+import { getAllEmployees, getProjectInfo } from './db/queries'
 
 const app = express()
 app.use(cors({
@@ -17,6 +17,7 @@ app.get('/', (req:any,res:any) => {
 })
 
 app.get('/employees', getAllEmployees)
+app.get('/projects', getProjectInfo)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

@@ -1,31 +1,24 @@
-import logo from "./logo.svg";
-import useGetData from "./dataHooks/useGetData";
+import { EmployeeContextProvider } from "./Contexts/EmployeeContext";
+import EmployeeCard from "./components/EmployeeCard";
 
 import "./App.css";
 
 function App() {
-  const data = useGetData();
+  // const data = useGetEmpData();
+  // const proData = useGetProjData();
 
-  // todo find out how to not mutate object when converting the data
+  // // todo find out how to not mutate object when converting the data
 
-  console.log(data);
+  // const db_image = data.length > 0 && data[0].img;
+  // console.log("db image: ", db_image);
+  // data.length > 0 && console.log(data[0].img);
+  // proData.length > 0 && console.log(proData);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EmployeeContextProvider>
+        <EmployeeCard />
+      </EmployeeContextProvider>
     </div>
   );
 }
