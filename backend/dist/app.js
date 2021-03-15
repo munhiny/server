@@ -20,6 +20,7 @@ app.get('/', function (req, res) {
     res.send('Hello World! Welcome to CompanyX');
 });
 app.get('/employees', queries_1.getAllEmployees);
+app.get('/projects', queries_1.getProjectInfo);
 app.listen(port, function () {
     console.log("listening on port " + port);
 });

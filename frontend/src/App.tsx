@@ -1,43 +1,24 @@
-import { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import { EmployeeContextProvider } from "./Contexts/EmployeeContext";
+import EmployeeCard from "./components/EmployeeCard";
+
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState([]);
-  const url = "http://localhost:4000/employees";
+  // const data = useGetEmpData();
+  // const proData = useGetProjData();
 
-  const getData = async () => {
-    try {
-      const response = await fetch(url);
-      const jsonData = await response.json();
-      setData(jsonData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // // todo find out how to not mutate object when converting the data
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  data.length > 0 && console.log(data[0]);
+  // const db_image = data.length > 0 && data[0].img;
+  // console.log("db image: ", db_image);
+  // data.length > 0 && console.log(data[0].img);
+  // proData.length > 0 && console.log(proData);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EmployeeContextProvider>
+        <EmployeeCard />
+      </EmployeeContextProvider>
     </div>
   );
 }
