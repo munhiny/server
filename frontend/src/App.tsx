@@ -1,7 +1,7 @@
 import { EmployeeContextProvider } from "./Contexts/EmployeeContext";
 import EmployeeCard from "./components/EmployeeCard";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   // const data = useGetEmpData();
