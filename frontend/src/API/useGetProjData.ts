@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-type Project = {
+export type Project = {
     emp_fname: string
     emp_lname: string
     job_description: string
