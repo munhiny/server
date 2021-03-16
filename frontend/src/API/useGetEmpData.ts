@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react'
 
 export type employee = {
+  emp_num: number
   emp_fname: string
   emp_lname: string
   img: string

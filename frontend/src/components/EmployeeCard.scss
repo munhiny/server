@@ -1,0 +1,36 @@
+.card {
+    padding: 1.5rem;
+    margin: auto;
+    align-items: center;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: .0625rem solid #A9A9A9;
+    // border-radius: 5%;
+    h2 {
+        margin: 0;
+        padding: 0.625rem;
+    }
+    p {
+        margin: 0;
+        padding: .3125rem;
+    }
+    &__pic {
+        content: '';
+        align-items: center;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+    }
+    &__summary {
+        font-size: 0.875rem;
+        min-width: 20rem;
+        max-width: 25rem;
+        margin: 0px;
+    }
+}
