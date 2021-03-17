@@ -1,11 +1,13 @@
 import "./EmployeeCard.scss";
 
 type Props = {
-  firstName: String;
-  lastName: String;
-  img: String;
-  jobDesc: String;
-  jobChgHour: Number;
+  firstName?: String;
+  lastName?: String;
+  img?: String;
+  jobDesc?: String;
+  jobChgHour?: Number;
+  card?: boolean;
+  projects?: string[];
 };
 
 const EmployeeCard = ({
@@ -14,8 +16,10 @@ const EmployeeCard = ({
   img,
   jobDesc,
   jobChgHour,
+  projects,
+  card = true,
 }: Props) => {
-  const card = true;
+  // todo remove duplictes in projects and find a better way to display projects
   return (
     <div className={`card${card ? "" : "_row"}`}>
       <div
@@ -25,19 +29,19 @@ const EmployeeCard = ({
       <div className="card__name">
         <h2>{`${firstName} ${lastName}`}</h2>
       </div>
-      <div className="card__postion">
+      <div className="card__position">
         <span>Position: </span>
         <p>{jobDesc}</p>
       </div>
       <div className="card__rate">
         <span>Rate:</span>
-        <p>${jobChgHour.toFixed(2)}</p>
+        <p>${jobChgHour ? jobChgHour.toFixed(2) : ""}</p>
       </div>
       {card && (
         <>
           <div className="card__project">
-            <span>Project: </span>
-            <p>Airwave</p>
+            <span>Projects: </span>
+            <p>{projects ? projects.join(", ") : ""}</p>
           </div>
           <div className="card__summary">
             <span>Profile: </span>
