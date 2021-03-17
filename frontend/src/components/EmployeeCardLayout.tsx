@@ -1,6 +1,7 @@
 import EmployeeCard from "./EmployeeCard";
 import { useContext } from "react";
 import { EmployeeContext } from "../Contexts/EmployeeContext";
+import "./EmployeeCardLayout.scss";
 
 const EmployeeCardLayout = () => {
   const employeeData = useContext(EmployeeContext);
