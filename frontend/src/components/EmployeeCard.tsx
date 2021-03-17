@@ -7,6 +7,7 @@ type Props = {
   jobDesc?: String;
   jobChgHour?: Number;
   card?: boolean;
+  projects?: string[];
 };
 
 const EmployeeCard = ({
@@ -15,8 +16,10 @@ const EmployeeCard = ({
   img,
   jobDesc,
   jobChgHour,
+  projects,
   card = true,
 }: Props) => {
+  // todo remove duplictes in projects and find a better way to display projects
   return (
     <div className={`card${card ? "" : "_row"}`}>
       <div
@@ -38,7 +41,7 @@ const EmployeeCard = ({
         <>
           <div className="card__project">
             <span>Projects: </span>
-            <p>Airwave</p>
+            <p>{projects ? projects.join(", ") : ""}</p>
           </div>
           <div className="card__summary">
             <span>Profile: </span>

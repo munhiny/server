@@ -44,6 +44,7 @@ const EmployeeCardLayout = () => {
         img={person.img}
         jobDesc={person.job}
         jobChgHour={person.charge}
+        projects={person.project}
       />
     ));
   };
