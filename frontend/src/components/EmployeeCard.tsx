@@ -26,7 +26,7 @@ const EmployeeCard = ({
       <div className="card__name">
         <h2>{`${firstName} ${lastName}`}</h2>
       </div>
-      <div className="card__postion">
+      <div className="card__position">
         <span>Position: </span>
         <p>{jobDesc}</p>
       </div>
