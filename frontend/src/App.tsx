@@ -1,4 +1,5 @@
 import { EmployeeContextProvider } from "./Contexts/EmployeeContext";
+import { ProjectContextProvider } from "./Contexts/ProjectContext";
 import "./App.scss";
 import EmployeeCardLayout from "./components/EmployeeCardLayout";
 
@@ -6,7 +7,9 @@ function App() {
   return (
     <div className="App">
       <EmployeeContextProvider>
-        <EmployeeCardLayout />
+        <ProjectContextProvider>
+          <EmployeeCardLayout />
+        </ProjectContextProvider>
       </EmployeeContextProvider>
     </div>
   );

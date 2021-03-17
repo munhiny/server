@@ -1,11 +1,12 @@
 import "./EmployeeCard.scss";
 
 type Props = {
-  firstName: String;
-  lastName: String;
-  img: String;
-  jobDesc: String;
-  jobChgHour: Number;
+  firstName?: String;
+  lastName?: String;
+  img?: String;
+  jobDesc?: String;
+  jobChgHour?: Number;
+  card?: boolean;
 };
 
 const EmployeeCard = ({
@@ -14,8 +15,8 @@ const EmployeeCard = ({
   img,
   jobDesc,
   jobChgHour,
+  card = true,
 }: Props) => {
-  const card = true;
   return (
     <div className={`card${card ? "" : "_row"}`}>
       <div
@@ -31,12 +32,12 @@ const EmployeeCard = ({
       </div>
       <div className="card__rate">
         <span>Rate:</span>
-        <p>${jobChgHour.toFixed(2)}</p>
+        <p>${jobChgHour ? jobChgHour.toFixed(2) : ""}</p>
       </div>
       {card && (
         <>
           <div className="card__project">
-            <span>Project: </span>
+            <span>Projects: </span>
             <p>Airwave</p>
           </div>
           <div className="card__summary">

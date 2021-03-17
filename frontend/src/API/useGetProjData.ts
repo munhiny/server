@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 
 export type Project = {
+    emp_num: number
     emp_fname: string
     emp_lname: string
     job_description: string
