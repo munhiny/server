@@ -1,5 +1,5 @@
 import EmployeeCard from "./EmployeeCard";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { EmployeeContext } from "../Contexts/EmployeeContext";
 import { ProjectContext } from "../Contexts/ProjectContext";
 import "./EmployeeCardLayout.scss";
@@ -17,7 +17,8 @@ type person = {
 const EmployeeCardLayout = () => {
   const employeeData = useContext(EmployeeContext);
   const projectData = useContext(ProjectContext);
-  const [childData, setChildData] = useState("");
+  const [modal, setModal] = useState(false);
+  const [selected, setSelected] = useState<person>({});
 
   const people = employeeData.map((employee) => {
     let person: person = {};
@@ -35,13 +36,12 @@ const EmployeeCardLayout = () => {
     return person;
   });
 
-  const handleCallback = (childDta: any) => {
-    setChildData(childDta);
+  const handleCallback = (childData: number) => {
+    const chosenOne = people.filter((person) => person.emp_num === childData);
+    const chosen: person = chosenOne[0];
+    setSelected(chosen);
+    setModal(!modal);
   };
-
-  if (childData) {
-    console.log(childData);
-  }
 
   const renderCards = () => {
     if (people.length < 0) return "";
@@ -49,6 +49,7 @@ const EmployeeCardLayout = () => {
       <div key={person.emp_num}>
         <EmployeeCard
           key={person.emp_num}
+          empNum={person.emp_num}
           firstName={person.firstName}
           lastName={person.lastName}
           img={person.img}
@@ -61,7 +62,29 @@ const EmployeeCardLayout = () => {
     ));
   };
 
-  return <div>{renderCards()}</div>;
+  return (
+    <>
+      <div>
+        {renderCards()}
+        {selected && modal && (
+          <div className="modal">
+            <EmployeeCard
+              key={selected.emp_num}
+              empNum={selected.emp_num}
+              firstName={selected.firstName}
+              lastName={selected.lastName}
+              img={selected.img}
+              jobDesc={selected.job}
+              jobChgHour={selected.charge}
+              projects={selected.project}
+              card={true}
+              parentCallback={handleCallback}
+            />
+          </div>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default EmployeeCardLayout;

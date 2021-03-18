@@ -1,7 +1,10 @@
-div {
-    display: block;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    text-align: centre;
-}
+    div {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        text-align: centre;
+        .modal {
+            position: absolute;
+        }
+    }
