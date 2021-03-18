@@ -1,6 +1,7 @@
 import "./EmployeeCard.scss";
 
 type Props = {
+  empNum?: number;
   firstName?: String;
   lastName?: String;
   img?: String;
@@ -9,9 +10,11 @@ type Props = {
   card?: boolean;
   projects?: string[];
   parentCallback?: any;
+  modal?: boolean;
 };
 
 const EmployeeCard = ({
+  empNum,
   firstName,
   lastName,
   img,
@@ -20,6 +23,7 @@ const EmployeeCard = ({
   projects,
   card = false,
   parentCallback,
+  modal = false,
 }: Props) => {
   // todo remove duplictes in projects and find a better way to display projects
   const currentProject = projects && projects.length > 0 && projects[0];
@@ -39,10 +43,11 @@ const EmployeeCard = ({
   // therefore, first index of elementt does not equal the current index
   // means that it has occured before and so do not add to the new array
 
-  const onClickHandler = (event: any) => {
-    console.log("event", event);
+  // on click handler to send to parent row that was clicked.
+  const onClickHandler = () => {
     console.log("you have clicked me");
-    parentCallback(firstName);
+    if (modal) return;
+    parentCallback(empNum);
   };
 
   return (
