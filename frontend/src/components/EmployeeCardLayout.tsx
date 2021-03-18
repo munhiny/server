@@ -1,5 +1,5 @@
 import EmployeeCard from "./EmployeeCard";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { EmployeeContext } from "../Contexts/EmployeeContext";
 import { ProjectContext } from "../Contexts/ProjectContext";
 import "./EmployeeCardLayout.scss";
@@ -17,6 +17,7 @@ type person = {
 const EmployeeCardLayout = () => {
   const employeeData = useContext(EmployeeContext);
   const projectData = useContext(ProjectContext);
+  const [childData, setChildData] = useState("");
 
   const people = employeeData.map((employee) => {
     let person: person = {};
@@ -34,18 +35,29 @@ const EmployeeCardLayout = () => {
     return person;
   });
 
+  const handleCallback = (childDta: any) => {
+    setChildData(childDta);
+  };
+
+  if (childData) {
+    console.log(childData);
+  }
+
   const renderCards = () => {
     if (people.length < 0) return "";
     return people.map((person) => (
-      <EmployeeCard
-        key={person.emp_num}
-        firstName={person.firstName}
-        lastName={person.lastName}
-        img={person.img}
-        jobDesc={person.job}
-        jobChgHour={person.charge}
-        projects={person.project}
-      />
+      <div key={person.emp_num}>
+        <EmployeeCard
+          key={person.emp_num}
+          firstName={person.firstName}
+          lastName={person.lastName}
+          img={person.img}
+          jobDesc={person.job}
+          jobChgHour={person.charge}
+          projects={person.project}
+          parentCallback={handleCallback}
+        />
+      </div>
     ));
   };
 
